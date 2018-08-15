@@ -9,7 +9,7 @@ class UsersService extends Service {
     async find (id) {
         const { ctx, app } = this
         let users = await app.mysql.get('user', { id: id })
-        console.log('users ', users)
+        console.log('打印session ', ctx.session.user)
         return users
     }
 }

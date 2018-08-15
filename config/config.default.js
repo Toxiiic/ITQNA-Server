@@ -34,5 +34,12 @@ module.exports = appInfo => {
     secret: '62a45ac8dfd7ddf99e96b390905748210a250e8d'
   }
 
-  return config;
+  config.security = {
+    domainWhiteList: ['http://localhost:8080'],
+    csrf: {
+      enable: false
+    }
+  }
+
+  return config
 }

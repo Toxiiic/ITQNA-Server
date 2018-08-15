@@ -15,3 +15,7 @@ exports.passportGithub = {
     enabled: true,
     package: 'egg-passport-github'
 }
+exports.cors = {
+    enabled: true,
+    package: 'egg-cors'
+}
