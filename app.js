@@ -11,7 +11,8 @@ module.exports = app => {
         console.log('打印打印 %s %s get user: %j', req.method, req.url, user)
         app.passport.doVerify(req, user, done)
         // done(null, user)
-        console.log('~')
+        // ctx.session.in_app_amount = ctx.session.in_app_amount ? ctx.session.in_app_amount+1 : 1
+        // console.log('~app：', ctx.session.in_app_amount)
     }))
 
     app.passport.verify(async (ctx, user) => {

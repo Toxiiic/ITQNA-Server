@@ -40,6 +40,9 @@ module.exports = appInfo => {
       enable: false
     }
   }
+  config.cors = {
+    credentials: true
+  }
 
   return config
 }
