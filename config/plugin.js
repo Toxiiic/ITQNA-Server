@@ -19,3 +19,11 @@ exports.cors = {
     enabled: true,
     package: 'egg-cors'
 }
+exports.nunjucks = {
+    enabled: true,
+    package: 'egg-view-nunjucks'
+}
+exports.jwt = {
+    enabled: true,
+    package: 'egg-jwt'
+}

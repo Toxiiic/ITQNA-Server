@@ -43,6 +43,15 @@ module.exports = appInfo => {
   config.cors = {
     credentials: true
   }
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.tpl': 'nunjucks'
+    }
+  }
+  config.jwt = {
+    secret: 'ayayayaya'
+  }
 
   return config
 }
