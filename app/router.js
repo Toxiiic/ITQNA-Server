@@ -10,7 +10,7 @@ module.exports = app => {
   app.passport.mount('github')
 
   router.resources('users', '/api/users', controller.users)
-  // router.resources('questions', '/api/questions', controller.questions)
+  router.resources('questions', '/api/questions', controller.questions)
   // router.resources('answers', '/api/answers', controller.answers)
   // router.resources('comments', '/api/comments', controller.comments)
   // router.resources('favs', '/api/favs', controller.favs)
