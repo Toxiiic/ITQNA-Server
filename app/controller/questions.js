@@ -12,17 +12,16 @@ class QuestionsController extends Controller {
     }
 
     async index () {
-
         const { service, ctx } = this
-
-        ctx.body = await service.users.index()
+        if (ctx.query.no_answer) {
+            ctx.body = await service.questions.noAnswer()
+        } else {
+            ctx.body = await service.questions.index()
+        }
     }
 
     async show () {
-        // const { service, ctx } = this
-        // console.log(ctx.headers.authorization)
-
-        // ctx.body = await service.questions.find(ctx.params.id)
+        this.ctx.body = await this.service.questions.show(this.ctx.params.id)
     }
 
 }
