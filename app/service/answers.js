@@ -1,9 +1,6 @@
 
 const Service = require('egg').Service
 
-// const answerQuery = `select title, a.id ans_id, q.id qs_id, content, u.name user_name, motto user_motto, head_url user_head_url
-// from (answer a join question q on q.id = a.question_id)
-// join user u on a.answer_user_id = u.id`
 /**
  * 
  * @param {string} whereQuery 传入的where从句，可为空
