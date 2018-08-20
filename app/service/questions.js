@@ -9,12 +9,10 @@ class QuestionsService extends Service {
         let result = await this.app.mysql.insert('question', this.ctx.request.body)
         return result.insertId
     }
-
     async show (id) {
         const { ctx, app } = this
         return await app.mysql.query(`${questionQuery} where q.id = ${id}`)
     }
-
     async index () {
         return await this.app.mysql.get('question')
     }
@@ -24,6 +22,9 @@ class QuestionsService extends Service {
         (SELECT q.id qs_id, title, ask_user_id, a.id ans_id FROM question q left JOIN answer a ON q.id = a.question_id) r1
         where ans_id is null) r2
         join user u on r2.ask_user_id = u.id`)
+    }
+    async askUserId (userId) {
+        return await this.app.mysql.query(`${questionQuery} where q.ask_user_id = ${userId}`)
     }
 
 }

@@ -13,9 +13,8 @@ class UsersController extends Controller {
 
     async show () {
         const { service, ctx } = this
-        console.log(ctx.headers.authorization)
 
-        ctx.body = await service.users.find(ctx.params.id)
+        ctx.body = await service.users.show(ctx.params.id)
     }
 
 }

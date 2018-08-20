@@ -7,14 +7,14 @@ class UsersService extends Service {
         return result.insertId
     }
 
-    async find (id) {
+    async show (id) {
         const { ctx, app } = this
-        let user = await app.mysql.get('user', { id: id })
+        let user = await app.mysql.query(`select id, \`name\`, motto, gender, head_url from user where id = ${id}`)
+        // let user = await app.mysql.get('user', { id: id })
         // console.log('打印session ', ctx.session)
         // ctx.cookies.set('egg_cookie_trial', 'oh yeah oh yeah')
         // ctx.session.in_controller_amount = ctx.session.in_controller_amount ? ctx.session.in_controller_amount+1 : 1
         // console.log('~controller', ctx.session.in_controller_amount)
-        
         return user
     }
 

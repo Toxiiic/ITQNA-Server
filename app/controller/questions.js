@@ -15,6 +15,8 @@ class QuestionsController extends Controller {
         const { service, ctx } = this
         if (ctx.query.no_answer) {
             ctx.body = await service.questions.noAnswer()
+        } else if (ctx.query.ask_user_id) {
+            ctx.body = await service.questions.askUserId(ctx.query.ask_user_id)
         } else {
             ctx.body = await service.questions.index()
         }

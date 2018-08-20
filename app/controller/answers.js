@@ -15,8 +15,14 @@ class AnswersController extends Controller {
         const { service, ctx } = this
 
         let qsId = ctx.query.qs_id
+        let userId = ctx.query.user_id
+        let likeUserId = ctx.query.like_user_id
         if(qsId) {
             ctx.body = await service.answers.qsId(qsId)
+        } else if(userId) {
+            ctx.body = await service.answers.userId(userId)
+        } else if(likeUserId) {
+            ctx.body = await service.answers.likeUserId(likeUserId)
         } else {
             ctx.body = await service.answers.index()
         }
