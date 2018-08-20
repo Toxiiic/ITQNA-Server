@@ -17,11 +17,9 @@ module.exports = app => {
   // router.resources('comments', '/api/comments', controller.comments)
   // router.resources('favs', '/api/favs', controller.favs)
 
+  router.post('/register', controller.auth.register)
+  router.post('/login', app.passport.authenticate('local', { successRedirect: '/authCallback' }))
 
-  router.post('/login', app.passport.authenticate('local', { successRedirect: '/authCallback' }), () => {
-    debugger
-    this
-  })
   // router.get('/logedin', controller.auth.loggedIn)
   router.get('/authCallback', controller.auth.authCallback)
   router.get('/verify-token', controller.auth.verifyToken)

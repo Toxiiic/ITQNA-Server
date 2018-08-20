@@ -3,7 +3,8 @@ const Service = require('egg').Service
 
 class UsersService extends Service {
     async create () {
-        
+        let result = await this.app.mysql.insert('user', this.ctx.request.body)
+        return result.insertId
     }
 
     async find (id) {

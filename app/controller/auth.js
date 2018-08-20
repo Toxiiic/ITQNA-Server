@@ -3,10 +3,23 @@
 const Controller = require('egg').Controller;
 
 class AuthController extends Controller {
+
+    async register () {
+        //先创建用户
+        let id = await this.service.users.create()
+
+        if(id) {
+            this.ctx.body = {
+                userId: id,
+                token: this.app.jwt.sign(id, this.app.config.jwt.secret)
+            }
+            // this.ctx.status = 201
+        }
+    }
+
     async authCallback () {
         // console.log('登陆成功')
         this.ctx.body = {
-            success: true,
             userId: this.ctx.user.id,
             token: this.app.jwt.sign(this.ctx.user.id, this.app.config.jwt.secret)
         }
