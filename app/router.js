@@ -13,6 +13,7 @@ module.exports = app => {
   router.resources('questions', '/api/questions', controller.questions)
   // router.resources('noanswer_question', '/api/questions/noanswer', controller.questions.noanswer)
   router.resources('answers', '/api/answers', controller.answers)
+  router.resources('ula', '/api/ula', controller.ula)
   // router.resources('comments', '/api/comments', controller.comments)
   // router.resources('favs', '/api/favs', controller.favs)
 
