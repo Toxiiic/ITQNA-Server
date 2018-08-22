@@ -11,18 +11,18 @@ exports.passport = {
     enabled: true,
     package: 'egg-passport'
 }
-exports.passportGithub = {
-    enabled: true,
-    package: 'egg-passport-github'
-}
+// exports.passportGithub = {
+//     enabled: true,
+//     package: 'egg-passport-github'
+// }
 exports.cors = {
     enabled: true,
     package: 'egg-cors'
 }
-exports.nunjucks = {
-    enabled: true,
-    package: 'egg-view-nunjucks'
-}
+// exports.nunjucks = {
+//     enabled: true,
+//     package: 'egg-view-nunjucks'
+// }
 exports.jwt = {
     enabled: true,
     package: 'egg-jwt'

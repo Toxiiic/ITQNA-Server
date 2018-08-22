@@ -3,13 +3,18 @@ const Service = require('egg').Service
 
 /**
  * 
- * @param {string} whereQuery 传入的where从句，可为空
- * options.whereQuery
+ * @param {string} where 传入的where从句，可为空
+ * options.where
  * options.ulaTable
  * options.joinType
  */
 const getAnswerQuery = (options) => {
-    options.whereQuery = options.whereQuery || ''
+    options = options || {
+        where: '',
+        ulaTable: 'user_like_answer',
+        join: 'right join'
+    }
+    options.where = options.where || ''
     options.ulaTable = options.ulaTable || 'user_like_answer'
     options.join = options.join || 'right join'
 
@@ -25,7 +30,7 @@ const getAnswerQuery = (options) => {
                 join question q on q.id = a.question_id
         )
         join user u on a.answer_user_id = u.id
-        ${options.whereQuery}
+        ${options.where}
         group by ans_id`
 }
 
@@ -55,6 +60,10 @@ class AnswersService extends Service {
     }
     async userId (userId) {
         let answerQueryString = getAnswerQuery({ where: `where a.answer_user_id = ${userId}` })
+        return await this.app.mysql.query(answerQueryString)
+    }
+    async search (searchValue) {
+        let answerQueryString = getAnswerQuery({ where: `where a.content like '%${searchValue}%'` })
         return await this.app.mysql.query(answerQueryString)
     }
 
